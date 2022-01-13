@@ -1,0 +1,71 @@
+//@import 'stylesheets.scss';
+
+//Fonts
+// @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c:wght@100&family=Montserrat:wght@200;300;400;500;600;700;800;900&family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+$primary-font: "Montserrat","Helvetica Neue",Arial,Helvetica,Geneva,sans-serif;
+
+$montserrat : $primary-font;
+
+
+///mixin
+
+@mixin title-big {
+    color: $ui-2;
+    font-family: $primary-font;
+    font-size: 74px;
+    line-height: 75px;
+    font-weight:300;
+  }
+  @mixin title-medium {
+    color: $ui-2;
+    font-family: $primary-font;
+    font-size: 53px;
+    line-height: 65px;
+    font-weight:300;
+  }
+  @mixin title-common{
+    font-size:50px;
+    line-height:60px;
+    font-weight:500;
+    text-align:center;
+  }
+
+  @mixin body-text{
+    font-size:22px;
+    line-height:30px;
+    font-weight:400;
+    color:$ui-5;
+  }
+
+  @mixin anchors{
+      color:$ui-1;
+      font-family:$primary-font;
+      font-size:18px;
+  }
+
+  @mixin ctaS{
+    background-color: $ui-1;
+    font-family:$primary-font;
+    border:none;
+    border-radius:6px;
+    padding: 10px 30px;
+    color:$ui-2;
+    &:hover{
+        box-shadow:0.1em 0.1em 0.5em $mediumGray;
+    }
+  }
+
+
+  @mixin frontCta{
+    background-color: $ui-1;
+    font-family:$primary-font;
+    border:none;
+    border-radius:6px;
+    padding: 10px 30px;
+    text-transform:uppercase;
+    color:$ui-2;
+    text-decoration: none;
+    &:hover{
+        box-shadow:0.1em 0.1em 0.5em $mediumGray;
+    }
+  }

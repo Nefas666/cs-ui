@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/scss/main.scss">
+    <title>Ciclostyle PWA</title>
+</head>
+
+<body>
+    <header class="page-header">
+        <nav>
+            <div class="trigger-menu-wrapper">
+                <button class="trigger-menu">
+                  <span class="logo-trigger"></span>
+                </button>
+            </div>
+            <ul class="menu">
+                <li>
+                    <a href="">MENU Element</a>
+                </li>
+                <li>
+                    <a href="">MENU Element</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <a href="" role="button" aria-label="Toggle menu" class="lottie-wrapper">
+        <span class="menu-toggle"></span>
+    </a>
+
+    <main class="page-main container">
+        <!--<div class="progress">
+                <span>PROGRESS BAR :)</span>
+              </div>-->
+        <div class="slide slide-1">
+            <div class="container-slides">
+                <h1><strong>Communicate events and meetings anonimously along networks & the Wolrd Wide Web</strong></h1>
+                <h2>with CycloStyle PWA.</h2>
+                <a class="main-cta" href="#">Download with bookmark <span class="download-toggle"></span></a>
+            </div>
+        </div>
+        <div class="progress">
+            <span class="progress--logo"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="slide slide-2">
+            <h2>CycloStyle like it's 1874 with <span>the first progressive web app</span> that access <span>ipfs networks</span> allowing to communicate safely untracked <span>informations</span>.</h2>
+        </div>
+
+        <div class="slide slide-3">
+            <h3>Step 1</h3>
+            <p>Choose from a starting template or build one of your own.</p>
+        </div>
+        <div class="slide slide-3">
+            <h3>Step 2</h3>
+            <p>Insert an image, a date and a title of your event. You can also add an optional description.</p>
+        </div>
+        <div class="slide slide-3">
+            <h3>Step 3</h3>
+            <p>Save it on ipfs for instant share it with a direct link or save it temporarly in your local storage. </p>
+        </div>
+
+    </main>
+
+    <footer>
+    </footer>
+
+    <script>
+        window.addEventListener(
+            "scroll",
+            () => {
+                document.body.style.setProperty(
+                    "--scroll",
+                    window.pageYOffset / (document.body.offsetHeight - window.innerHeight)
+                );
+                document.body.style.setProperty(
+                    "--scroll-per",
+                    `${(window.pageYOffset / document.body.offsetHeight) * 100}%`
+                );
+            },
+            false
+        );
+
+        window.addEventListener(
+            "mousemove",
+            (e) => {
+                document.documentElement.style.setProperty("--mouse-x", e.clientX);
+                document.body.style.setProperty("--mouse-x", e.clientX);
+                document.body.style.setProperty("--mouse-y", e.clientY);
+                document.body.style.setProperty(
+                    "--mouse-x-per",
+                    (e.clientX / document.body.offsetWidth) * 100 + "%"
+                );
+                document.body.style.setProperty(
+                    "--mouse-y-per",
+                    (e.clientY / document.body.offsetHeight) * 100 + "%"
+                );
+            },
+            false
+        );
+    </script>
+    <script>
+        const body = document.body;
+        const triggerMenu = document.querySelector(".page-header .trigger-menu");
+        const nav = document.querySelector(".page-header nav");
+        const menu = document.querySelector(".page-header .menu");
+        const lottieWrapper = document.querySelector(".lottie-wrapper");
+        const lottiePlayer = document.querySelector("lottie-player");
+        const scrollUp = "scroll-up";
+        const scrollDown = "scroll-down";
+        let lastScroll = 0;
+
+        triggerMenu.addEventListener("click", () => {
+            body.classList.toggle("menu-open");
+        });
+
+        lottieWrapper.addEventListener("click", (e) => {
+            e.preventDefault();
+            triggerMenu.click();
+            body.classList.toggle("menu-open-with-lottie");
+        });
+
+        window.addEventListener("scroll", () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll <= 0) {
+                body.classList.remove(scrollUp);
+                return;
+            }
+
+            if (currentScroll > lastScroll && !body.classList.contains(scrollDown)) {
+                // down
+                body.classList.remove(scrollUp);
+                body.classList.add(scrollDown);
+                lottiePlayer.play();
+            } else if (
+                currentScroll < lastScroll &&
+                body.classList.contains(scrollDown)
+            ) {
+                // up
+                body.classList.remove(scrollDown);
+                body.classList.add(scrollUp);
+                lottiePlayer.stop();
+            }
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+////Containers
+$grid-gap: 30px;
+$max-width: 1360px;
+
+@mixin container(){
+  width: 95%;
+  position: relative;
+  max-width: $max-width - $grid-gap * 4;
+  display: block;
+  margin: 0 auto;
+
+}
+
+@mixin row() {
+    display: flex;
+}
+
+@mixin hero-bg{
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+    z-index: 0;
+    margin-bottom: 0;
+    overflow: hidden;
+}
+
+@mixin column($width, $gap: $grid-gap) {
+    @if unit($width) != "%" {
+        //$width: $width * 100%;
+    }
+    width: calc(#{$width}* 100% - (1 - #{$width}) * #{$gap});
+}
+
+@function str-replace($string, $search, $replace: "") {
+	$index: str-index($string, $search);
+
+	@if $index {
+		@return str-slice($string, 1, $index - 1) + $replace +
+			str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+	}
+
+	@return $string;
+}

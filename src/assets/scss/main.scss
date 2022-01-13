@@ -1,0 +1,346 @@
+@import 'colors';
+@import 'typo';
+@import 'container';
+@import 'breakpoints';
+@function str-replace($string, $search, $replace: "") {
+    $index: str-index($string, $search);
+    @if $index {
+        @return str-slice($string, 1, $index - 1)+$replace+str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+}
+
+/////GRIDS & CONTAINERS
+$grid-gap: 30px;
+$max-width: 1360px;
+$spacing:5.25rem;
+@mixin container() {
+    width: 95%;
+    position: relative;
+    max-width: $max-width - $grid-gap * 4;
+    display: block;
+    margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a {
+    font-family: $primary-font;
+}
+
+h1 {
+    @include title-big();
+    color: $ui-2;
+    padding: 0 $spacing;
+    margin-bottom: 0;
+}
+
+h2 {
+    @include title-medium();
+    padding: 0 $spacing;
+    color: #ff00a2;
+    font-weight: 600;
+    margin-top: 0;
+    span {
+        color: $ui-2;
+    }
+}
+
+h3 {
+    @include title-medium();
+    padding: 0 $spacing;
+    color: $ui-3;
+    font-weight: 600;
+    margin-top: 0;
+    span {
+        color: $ui-2;
+    }
+}
+
+body {
+    //@include container();
+    background: $ui-3;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    position: relative;
+    //color:$ui-2;
+    height: 200vh;
+    button {
+        background: white;
+        border: none;
+        cursor: pointer;
+        outline: none;
+        span.logo-trigger {
+            background-image: url("data:image/svg+xml,%3C%3Fxml version='1.0' encoding='utf-8'%3F%3E%3Csvg version='1.1' id='Livello_1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink' x='0px' y='0px' viewBox='0 0 275 63' style='enable-background:new 0 0 275 63;' xml:space='preserve'%3E%3Cstyle type='text/css'%3E .st0%7Bfill:%23FFFFFF;%7D .st1%7Bfill:%23C5037E;%7D .st2%7Bfill:%230397BB;%7D%0A%3C/style%3E%3Crect y='0.5' class='st0' width='275' height='63'/%3E%3Cpath class='st1' d='M267.7,27.5c-1.3-3.7-4-6.6-7.4-8.5c0,0-3.7-2.1-8.2-1.6c-8.7,1.1-11.9,6.9-12.7,8.5c-0.8,1.6-1.3,4.2-1.9,7.7 l3.7-1.3c0.5-2.1,0.8-4,1.6-5c0.8-1.1,1.6-2.4,2.7-3.2c1.1-1.1,2.4-1.9,3.7-2.4c2.9-1.1,5.8-1.1,8.5,0.3c2.7,1.3,4.8,3.2,5.6,5.6 L238.3,37c1.9,4.5,4.2,7.7,7.2,9.5c4.2,2.7,8.7,2.9,13.3,1.1c4.5-1.9,7.7-4.8,9-9.5C268.8,33.9,268.8,30.4,267.7,27.5z M263.7,38.9 c-1.3,2.4-3.2,4.2-6.1,5.3c-1.6,0.5-3.4,0.8-5,0.8c-1.9,0-3.4-0.5-4.8-1.3c-1.3-0.8-2.7-2.4-4.2-5l20.7-7.7 C264.8,34.4,264.5,37,263.7,38.9z'/%3E%3Cpath class='st2' d='M0,47.9h19.3c-2.4,0-5-1.3-8.2-4.2C7.9,41,6.3,37.6,6.3,33.3c0-2.9,0.8-5.6,2.1-8s3.4-4.5,5.8-5.8 c2.7-1.3,5.3-2.1,8.5-2.1c1.9,0,4,0.3,5.6,0.8c1.9,0.5,3.2,1.3,4.2,2.4c1.1,1.1,2.1,2.9,3.2,5.6h-3.2c-2.1-3.4-5.6-5.3-10.1-5.3 c-3.7,0-6.6,1.1-9,3.4s-3.7,5-3.7,8.5c0,2.1,0.5,4.2,1.6,6.1c1.1,1.9,2.7,3.4,4.5,4.2c1.9,0.8,4,1.3,6.4,1.3c4.2,0,7.7-1.6,10.1-4.8 h4.2c-1.3,2.7-3.2,4.8-5.6,6.1c-1.1,0.5-2.9,1.1-5,1.9H36v3.4H0V47.9z'/%3E%3Cpath class='st2' d='M69.4,51.1H53.5l-2.7,9c-0.3,0.3-0.3,0.5-0.8,0.8c-0.3,0.3-0.5,0.3-1.1,0.3c-0.3,0-0.5,0-0.8,0 c-0.3,0-0.5,0-0.5-0.3L37,51.1h-2.7v-3.4h3.7l10.1,9L55,37.3L36.2,18h4l16.4,15.4L63.3,18h4L54.5,47.6h14.6v3.4H69.4z'/%3E%3Cpath class='st2' d='M63,47.6h16.4c-2.4,0-5-1.3-8.2-4.2c-3.2-2.7-4.8-6.1-4.8-10.3c0-2.9,0.8-5.6,2.1-8c1.3-2.4,3.4-4.5,5.8-5.8 c2.7-1.3,5.3-2.1,8.5-2.1c1.9,0,4,0.3,5.6,0.8c1.9,0.5,3.2,1.3,4.2,2.4s2.1,2.9,3.2,5.6h-3.2c-2.1-3.4-5.6-5.3-10.1-5.3 c-3.7,0-6.6,1.1-9,3.4c-2.4,2.4-3.7,5-3.7,8.5c0,2.1,0.5,4.2,1.6,6.1c1.1,1.9,2.7,3.4,4.5,4.2c1.9,0.8,4,1.3,6.4,1.3 c4.2,0,7.7-1.6,10.1-4.8h3.2c-1.3,2.7-3.2,4.8-5.6,6.1c-1.1,0.5-2.9,1.3-5,2.1h14.6v3.4H63V47.6z'/%3E%3Cpath class='st2' d='M97.2,47.6h4.2v-40h4v40h4.2v3.4H97.2C97.2,51.1,97.2,47.6,97.2,47.6z'/%3E%3Cpath class='st2' d='M106.5,47.6H120c-2.1-0.8-4-2.1-5.6-4c-2.9-3.2-4.2-6.6-4.2-10.6s1.3-7.4,4-10.3c2.9-3.4,6.9-5,11.4-5 c4.5,0,8.2,1.6,11.4,5c2.7,2.9,4,6.4,4,10.3s-1.3,7.4-4.2,10.6c-1.6,1.9-3.4,2.9-5.6,4h13.5v3.4h-38.2V47.6z M125.5,21.7 c-4.2,0.3-7.2,1.6-9,4.2c-1.6,2.1-2.4,4.5-2.4,7.7c0,1.9,0.5,4,1.6,5.8c1.1,1.9,2.4,3.2,4.2,4.2c1.9,1.1,3.7,1.6,5.8,1.6 s4-0.5,5.8-1.6c1.9-1.1,3.2-2.4,4.2-4.2s1.6-3.7,1.6-5.8c0-3.2-1.1-5.8-3.4-8.2C131.4,22.7,128.7,21.7,125.5,21.7z'/%3E%3Cpath class='st2' d='M151.6,47.7h7.4c0,0-1-0.2-2-0.9c-1.5-1.1-3.3-2.6-4.1-5.8h4c0.5,2.1,1.9,3.2,4.5,3.2c2.1,0,3.7-0.3,4.8-1.3 s1.6-2.1,1.6-3.4c0-1.1-0.3-2.1-1.1-2.9c-0.8-0.8-2.4-1.6-4.8-2.7c-2.7-1.3-4.5-2.7-5.6-4s-1.3-2.9-1.3-4.5c0-2.1,0.8-4.2,2.4-5.6 c1.6-1.6,4-2.1,6.9-2.1c3.7-0.3,6.4,1.9,7.4,6.1h-3.2c0-1.9-1.6-2.9-4.5-2.7c-1.9,0-3.4,0.3-4.2,1.3c-0.8,1.1-1.3,1.9-1.3,2.9 s0.3,1.9,1.1,2.7c0.8,0.8,2.1,1.9,4.5,3.2c2.9,1.6,4.8,2.7,5.8,3.7c1.1,1.3,1.6,2.9,1.6,4.8c0,2.4-0.8,4.5-2.7,6.1 c-0.8,0.8-1.9,1.3-3.2,1.9h8.7v3.4h-22.8V47.7z'/%3E%3Cpath class='st2' d='M173.1,47.7h8.2V21.4h-7.7v-3.2h7.7V7.6h3.7v10.6h7.4v3.2H185v26.2h8.2v3.4h-20.4v-3.4H173.1z'/%3E%3Cpath class='st2' d='M226.7,51.1h-15.9l-2.7,9c-0.3,0.3-0.3,0.5-0.8,0.8c-0.3,0.3-0.5,0.3-1.1,0.3c-0.3,0-0.5,0-0.8,0 c-0.3,0-0.5,0-0.5-0.3l-10.6-9.9h-2.7v-3.4h3.4l10.1,9l6.9-19.3L193.3,18h4.5l16.4,15.4l6.6-15.4h4l-12.7,29.9h14.6 C226.7,47.9,226.7,51.1,226.7,51.1z'/%3E%3Cpath class='st2' d='M224.8,47.9h4.2V7.6h3.7v40.3h4.2v3.2h-12.5v-3.2H224.8z'/%3E%3Cpolygon class='st2' points='259.5,47.9 275,47.9 275,51.1 234,51.1 234,47.9 246,47.9 '/%3E%3Crect x='144.5' y='47.6' class='st0' width='1.9' height='3.4'/%3E%3Crect x='149.8' y='47.6' class='st0' width='1.8' height='3.4'/%3E%3Crect x='146.4' y='47.6' class='st2' width='3.4' height='3.4'/%3E%3C/svg%3E%0A");
+            background-repeat: no-repeat;
+            background-position: left;
+            background-size: contain;
+            height: 60px;
+            width: 200px;
+            display: block;
+        }
+    }
+    ul {
+        list-style: none;
+    }
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
+    .container-slides {
+        padding: 1.25rem;
+        position: relative;
+    }
+    a.main-cta {
+        background: transparent;
+        border: 1px solid $ui-1;
+        padding: 1.25rem;
+        cursor: pointer;
+        outline: none;
+        color: $ui-2;
+        transition: all .5s;
+        font-size: 400;
+        line-height: 1.25rem;
+        text-transform: uppercase;
+        margin: 0 $spacing;
+        &:hover {
+            color: $ui-1;
+            text-decoration: underline;
+            border: 1px solid $ui-2;
+            background-color: rgba(255, 255, 255, 0.33);
+            transition: all .5s;
+        }
+    }
+    .download-toggle {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='%23FFFFFF'%3E%3Cg%3E%3Crect fill='none' height='24' width='24'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M17,11l-1.41-1.41L13,12.17V4h-2v8.17L8.41,9.59L7,11l5,5 L17,11z'/%3E%3C/g%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        height: 30px;
+        width: 30px;
+        display: inline-block;
+        padding: 0 0.5em;
+        &:hover {
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='#{str-replace('#{$ui-1}', '#', $replace: '%23')}'%3E%3Cg%3E%3Crect fill='none' height='24' width='24'/%3E%3C/g%3E%3Cg%3E%3Cpath d='M18,15v3H6v-3H4v3c0,1.1,0.9,2,2,2h12c1.1,0,2-0.9,2-2v-3H18z M17,11l-1.41-1.41L13,12.17V4h-2v8.17L8.41,9.59L7,11l5,5 L17,11z'/%3E%3C/g%3E%3C/svg%3E");
+            transition: all .5s;
+        }
+    }
+}
+
+.trigger-menu-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    /*padding: 20px;*/
+    z-index: 2;
+    background: $ui-2;
+    transition: transform 0.4s;
+}
+
+.page-header .trigger-menu {
+    display: flex;
+    align-items: center;
+    font-size: 1.3rem;
+    color: $ui-2;
+    letter-spacing: 0.2em;
+}
+
+.page-header .trigger-menu svg {
+    fill: $ui-2;
+    margin-right: 8px;
+    transition: transform 0.3s;
+}
+
+.page-header {
+    .menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        display: none;
+        text-align: center;
+        padding: 15vh 0 5vh;
+        overflow: auto;
+        z-index: 1;
+        background: $ui-2;
+        & a {
+            font-size: 3rem;
+        }
+    }
+    .sub-menu a {
+        font-size: 1.5rem;
+    }
+}
+
+.lottie-wrapper {
+    position: fixed;
+    bottom: 50px;
+    right: 25px;
+    z-index: 1;
+    padding: 5px;
+    border-radius: 5px;
+    /*background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle r='50' cx='50' cy='50' fill='tomato'/%3E%3Ccircle r='41' cx='47' cy='50' fill='orange'/%3E%3Ccircle r='33' cx='48' cy='53' fill='gold'/%3E%3Ccircle r='25' cx='49' cy='51' fill='yellowgreen'/%3E%3Ccircle r='17' cx='52' cy='50' fill='lightseagreen'/%3E%3Ccircle r='9' cx='55' cy='48' fill='teal'/%3E%3C/svg%3E");
+  background-size: 30px;
+  background-repeat: no-repeat;*/
+    display: block;
+    height: 30px;
+    width: 30px;
+}
+
+.page-main section {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    height: 100vh;
+}
+
+.page-main section::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.25);
+}
+
+.menu-open {
+    overflow: hidden;
+}
+
+.menu-open .trigger-menu-wrapper {
+    background: transparent;
+}
+
+.menu-open .page-header .menu {
+    display: block;
+}
+
+.menu-open .page-header svg {
+    transform: rotate(45deg);
+}
+
+.menu-open-with-lottie .page-header .menu {
+    padding: 5vh 0;
+}
+
+.scroll-down .trigger-menu-wrapper {
+    transform: translate3d(0, -100%, 0);
+}
+
+.scroll-down .lottie-wrapper {
+    background: $ui-1;
+}
+
+.scroll-up .trigger-menu-wrapper {
+    transform: none;
+}
+
+.scroll-up:not(.menu-open) .trigger-menu-wrapper {
+    background: $ui-2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.35);
+}
+
+.progress {
+    height: 45px;
+    padding-top: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: #fff;
+    /*width: calc(var(--scroll) * 50%);*/
+    width: var(--scroll-per);
+    z-index: 10;
+    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 55px #ffffff, 0 0 75px #ffffff;
+    &--logo {
+        background-image: url(../imgs/loading.gif);
+        display: block;
+        height: 45px;
+        width: 200px;
+        max-width: 100%;
+        padding-left: 6.25rem;
+        padding-top: 1.25rem;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        z-index: 11;
+        opacity: 83%;
+        margin-right: 0px;
+    }
+}
+
+.slide {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    flex-direction: column;
+}
+
+.slide-1 {
+    background: linear-gradient( to right, #12c2e9 var(--mouse-x-per, 50%), #ffffff);
+    /*background-position-x: calc(var(--mouse-x)*1px);*/
+}
+
+.slide-1 h1:nth-child(1) {
+    transform: translatex(calc(var(--scroll) * 1000 * 1px));
+}
+
+.slide-1 h2:nth-child(2) {
+    transform: translatex(calc(var(--scroll) * 1000 * -1px));
+}
+
+.slide-1 a:nth-child(3) {
+    opacity: calc(1 - var(--scroll) * 3);
+}
+
+.slide-2 {
+    background-color: $ui-3;
+    background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, rgb(255, 255, 255) 1px, transparent 1px);
+    background-size: 40px 40px, 40px 40px;
+    font-family: $primary-font;
+}
+
+.slide-2:hover {
+    background-position-x: calc(var(--mouse-x) * 1px);
+    background-position-y: calc(var(--mouse-y) * 1px);
+}
+
+.slide-2 h1 {
+    /* opacity: calc(1 - var(--scroll)); */
+    /*transform: scale(calc(1 - var(--scroll)));*/
+    /*transform: translatex(calc(var(--scroll) * 1000 * 1px));*/
+}
+
+.square {
+    width: 20px;
+    height: 20px;
+    /*border-radius: 50%;*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: $ui-2;
+    /*transform: scale(calc(1 + var(--scroll) * 5))
+    rotate(calc(var(--scroll) * 100 * 1deg));*/
+}
+
+.slide-3 {
+    background: radial-gradient( circle, $ui-2 calc(var(--scroll) * 25%), $ui-3 55%);
+}
