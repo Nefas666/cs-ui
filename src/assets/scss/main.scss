@@ -267,9 +267,9 @@ body {
     /*width: calc(var(--scroll) * 50%);*/
     width: var(--scroll-per);
     z-index: 10;
-    box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 55px #ffffff, 0 0 75px #ffffff;
+    //box-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 20px #ffffff, 0 0 30px #ffffff, 0 0 40px #ffffff, 0 0 55px #ffffff, 0 0 75px #ffffff;
     &--logo {
-        background-image: url(../imgs/loading.gif);
+        background-image: url(../imgs/loading-senzaloading.gif);
         display: block;
         height: 45px;
         width: 200px;
@@ -295,7 +295,7 @@ body {
 }
 
 .slide-1 {
-    background: linear-gradient( to right, #12c2e9 var(--mouse-x-per, 50%), #ffffff);
+    background: linear-gradient( to right, $ui-3 var(--mouse-x-per, 50%), #ffffff);
     /*background-position-x: calc(var(--mouse-x)*1px);*/
 }
 
@@ -342,5 +342,5 @@ body {
 }
 
 .slide-3 {
-    background: radial-gradient( circle, $ui-2 calc(var(--scroll) * 25%), $ui-3 55%);
+    background: radial-gradient( circle, $ui-3 calc(var(--scroll) * 25%), $ui-1 55%);
 }
