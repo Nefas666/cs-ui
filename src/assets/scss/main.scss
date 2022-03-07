@@ -47,7 +47,19 @@ h2 {
     font-weight: 600;
     margin-top: 0;
     span {
-        color: $ui-2;
+        color: $ui-3;
+    }
+}
+
+h2.slide1 {
+    @include title-medium();
+    padding: $spacing;
+    color: #ff00a2;
+    font-weight: 600;
+    margin-top: 0;
+    background-color: #fff;
+    span {
+        color: $ui-3;
     }
 }
 
@@ -172,7 +184,7 @@ body {
         text-align: center;
         padding: 15vh 0 5vh;
         overflow: auto;
-        z-index: 1;
+        z-index: 5;
         background: $ui-2;
         & a {
             font-size: 3rem;
@@ -187,15 +199,22 @@ body {
     position: fixed;
     bottom: 50px;
     right: 25px;
-    z-index: 1;
+    z-index: 6;
     padding: 5px;
     border-radius: 5px;
-    /*background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle r='50' cx='50' cy='50' fill='tomato'/%3E%3Ccircle r='41' cx='47' cy='50' fill='orange'/%3E%3Ccircle r='33' cx='48' cy='53' fill='gold'/%3E%3Ccircle r='25' cx='49' cy='51' fill='yellowgreen'/%3E%3Ccircle r='17' cx='52' cy='50' fill='lightseagreen'/%3E%3Ccircle r='9' cx='55' cy='48' fill='teal'/%3E%3C/svg%3E");
-  background-size: 30px;
-  background-repeat: no-repeat;*/
     display: block;
     height: 30px;
     width: 30px;
+    & svg {
+        display: block;
+        height: 30px;
+        width: 30px;
+        background-image: url(../imgs/menu.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        z-index: 7;
+    }
 }
 
 .page-main section {
@@ -279,9 +298,9 @@ body {
         background-repeat: no-repeat;
         background-position: center;
         background-size: cover;
-        z-index: 11;
+        z-index: 3;
         opacity: 83%;
-        margin-right: 0px;
+        margin-right: -230px;
     }
 }
 
@@ -297,6 +316,14 @@ body {
 .slide-1 {
     background: linear-gradient( to right, $ui-3 var(--mouse-x-per, 50%), #ffffff);
     /*background-position-x: calc(var(--mouse-x)*1px);*/
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, $ui-3, $ui-3, $ui-2, $ui-2, $ui-3) 1;
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .slide-1 h1:nth-child(1) {
@@ -316,6 +343,14 @@ body {
     background-image: linear-gradient(#fff 1px, transparent 1px), linear-gradient(90deg, rgb(255, 255, 255) 1px, transparent 1px);
     background-size: 40px 40px, 40px 40px;
     font-family: $primary-font;
+    border-top: 3px solid;
+    border-bottom: 3px solid;
+    border-image: linear-gradient(to right, $ui-3, $ui-3, $ui-2, $ui-2, $ui-3) 1;
+    margin-right: 0;
+    margin-left: 0;
+    width: 100%;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .slide-2:hover {
@@ -323,24 +358,6 @@ body {
     background-position-y: calc(var(--mouse-y) * 1px);
 }
 
-.slide-2 h1 {
-    /* opacity: calc(1 - var(--scroll)); */
-    /*transform: scale(calc(1 - var(--scroll)));*/
-    /*transform: translatex(calc(var(--scroll) * 1000 * 1px));*/
-}
-
-.square {
-    width: 20px;
-    height: 20px;
-    /*border-radius: 50%;*/
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: $ui-2;
-    /*transform: scale(calc(1 + var(--scroll) * 5))
-    rotate(calc(var(--scroll) * 100 * 1deg));*/
-}
-
 .slide-3 {
-    background: radial-gradient( circle, $ui-3 calc(var(--scroll) * 25%), $ui-1 55%);
+    background: radial-gradient( circle, $ui-2 calc(var(--scroll) * 25%), $ui-3 calc(var(--scroll) * 55%));
 }
