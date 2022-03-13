@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="assets/scss/main.scss">
+    <script src="core.js"></script>
+    <script src="index.js"></script>
     <title>Ciclostyle PWA</title>
 </head>
 
@@ -19,28 +21,28 @@
             </div>
             <ul class="menu">
                 <li>
-                    <a href="">MENU Element</a>
+                    <a href="">GitHub</a>
                 </li>
                 <li>
-                    <a href="">MENU Element</a>
+                    <a href="">Menu Element 2</a>
+                </li>
+                <li>
+                    <a href="">Menu Element 3</a>
                 </li>
             </ul>
         </nav>
     </header>
 
     <a href="" role="button" aria-label="Toggle menu" class="lottie-wrapper">
-       
+
     </a>
 
     <main class="page-main container">
-        <!--<div class="progress">
-                <span>PROGRESS BAR :)</span>
-              </div>-->
         <div class="slide slide-1">
             <div class="container-slides">
                 <h1><strong>Communicate events and meetings anonimously along networks & the Wolrd Wide Web</strong></h1>
                 <h2>with CycloStyle PWA.</h2>
-                <a class="main-cta" href="#">Download with bookmark <span class="download-toggle"></span></a>
+                <a class="main-cta" href="#">Go to app <span class="download-toggle"></span></a>
             </div>
         </div>
         <div class="progress">
@@ -50,26 +52,23 @@
             <span></span>
         </div>
         <div class="slide slide-2">
-            <h2 class="slide1">CycloStyle like it's 1874 with <span>the first progressive web app</span> that access <span>ipfs networks</span> allowing to communicate safely untracked <span>informations</span>.</h2>
+            <h2 class="slide1">CycloStyle like in 1874 with <span>the first progressive web app</span> that access <span>ipfs networks</span> allowing to communicate safely untracked <span>informations</span>.</h2>
         </div>
 
-        <div class="slide slide-3">
-            <h3>Step 1</h3>
-            <p>Choose from a starting template or build one of your own.</p>
+        <div class="slide slide-3" id="sl31">
         </div>
-        <div class="slide slide-3">
-            <h3>Step 2</h3>
-            <p>Insert an image, a date and a title of your event. You can also add an optional description.</p>
+        <div class="slide slide-3" id="sl32">
         </div>
-        <div class="slide slide-3">
-            <h3>Step 3</h3>
-            <p>Save it on ipfs for instant share it with a direct link or save it temporarly in your local storage. </p>
+        <div class="slide slide-3" id="sl33">
         </div>
 
     </main>
 
     <footer>
     </footer>
+    <script>
+        document.onload(TypeIntro(), Type2(), Type3());
+    </script>
 
     <script>
         window.addEventListener(
